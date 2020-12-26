@@ -33,7 +33,7 @@ public class User {
 	private String mobileNumber;
 	
 	@NotBlank
-	@Size(min = 6)
+	@Size(min = 6, max = 30)
 	private String password;
 	
 	private String company;
