@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vehicletelematics.auth.request.AuthRequest;
 import com.vehicletelematics.model.StringResponse;
 import com.vehicletelematics.model.User;
+import com.vehicletelematics.service.SubUserService;
 import com.vehicletelematics.service.UserService;
 
 @RestController
@@ -32,6 +33,9 @@ public class AuthController {
 	@Autowired
 	PasswordEncoder encoder;
 	
+	@Autowired
+	SubUserService subUserService;
+	
 	private final UserService userService;
 
 	public AuthController(final UserService userService) {
@@ -40,7 +44,7 @@ public class AuthController {
 	
 	@PostMapping(value = "signup")
 	public ResponseEntity<StringResponse> signUp(@Valid @RequestBody AuthRequest authRequest) {
-		if(userService.existsByEmail(authRequest.getEmail())) {
+		if(subUserService.existsByEmail(authRequest.getEmail())) {
 			StringResponse response = new StringResponse("Email already Registered");
 			return new ResponseEntity<StringResponse>(response, HttpStatus.OK);
 		}

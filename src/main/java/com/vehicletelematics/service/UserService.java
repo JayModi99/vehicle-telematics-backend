@@ -6,6 +6,8 @@ public interface UserService {
 	
 	public boolean existsByEmail(String email);
 	
+	public User findById(long id);
+	
 	public User save(User user);
 	
 	public User findByEmail(String email);
