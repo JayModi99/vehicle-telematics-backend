@@ -14,16 +14,8 @@ import com.vehicletelematics.service.MailService;
 @Service
 public class MailServiceImpl implements MailService {
 	
-	private JavaMailSender javaMailSender;
-
-	/**
-	 * 
-	 * @param javaMailSender
-	 */
 	@Autowired
-	public MailServiceImpl(JavaMailSender javaMailSender) {
-		this.javaMailSender = javaMailSender;
-	}
+	private JavaMailSender javaMailSender;
 	
 	@Autowired
 	SubUserRepository subUserRepository;

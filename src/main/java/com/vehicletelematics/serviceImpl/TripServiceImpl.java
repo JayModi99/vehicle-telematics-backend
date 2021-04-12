@@ -1,5 +1,7 @@
 package com.vehicletelematics.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,11 @@ public class TripServiceImpl implements TripService {
 		t.setEndLat(trip.getEndLat());
 		t.setEndLng(trip.getEndLng());
 		return tripRepository.save(t);
+	}
+
+	@Override
+	public List<Trip> getAllTrip(long userId) {
+		return tripRepository.findByUserIdOrderByIdAsc(userId);
 	}
 
 }
